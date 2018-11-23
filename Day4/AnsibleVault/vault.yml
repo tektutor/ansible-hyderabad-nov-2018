@@ -1,0 +1,8 @@
+- name: Demonstrates use of ansible vault to protect sensitive data
+  hosts: all
+  vars_files:
+     - contacts_file
+  tasks:
+    - name: Access the Ansible vault protected data
+      debug: msg="{{item.value.name}} ==> {{item.value.mobile}}"
+      with_dict: "{{contacts}}"

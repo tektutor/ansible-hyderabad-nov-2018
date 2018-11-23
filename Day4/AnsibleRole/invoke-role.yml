@@ -1,0 +1,6 @@
+---
+
+- name: Demonstrates invoking custom ansible role from a playbook
+  hosts: all
+  roles:
+    - apache

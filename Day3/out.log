@@ -1,0 +1,95 @@
+ansible-playbook 2.5.1
+  config file = /root/Training/Day3/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 2.7.15rc1 (default, Apr 15 2018, 21:51:34) [GCC 7.3.0]
+Using /root/Training/Day3/ansible.cfg as config file
+setting up inventory plugins
+Parsed /root/Training/Day3/hosts inventory source with ini plugin
+Loading callback plugin default of type stdout, v2.0 from /usr/lib/python2.7/dist-packages/ansible/plugins/callback/default.pyc
+
+PLAYBOOK: install-nginx.yml *************************************************************************
+2 plays in install-nginx.yml
+Read vars_file 'nginx_vars_file'
+Read vars_file 'nginx_vars_file'
+
+PLAY [Install, configure and deploy web page in nginx web server] ***********************************
+Read vars_file 'nginx_vars_file'
+
+TASK [Gathering Facts] ******************************************************************************
+task path: /root/Training/Day3/install-nginx.yml:1
+Read vars_file 'nginx_vars_file'
+Read vars_file 'nginx_vars_file'
+Read vars_file 'nginx_vars_file'
+Read vars_file 'nginx_vars_file'
+Read vars_file 'nginx_vars_file'
+Process WorkerProcess-5:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/process/worker.py", line 118, in run
+    self._rslt_q
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 138, in run
+    res = self._execute()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 558, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/normal.py", line 46, in run
+    result = merge_hash(result, self._execute_module(task_vars=task_vars, wrap_async=wrap_async))
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 694, in _execute_module
+    (module_style, shebang, module_data, module_path) = self._configure_module(module_name=module_name, module_args=module_args, task_vars=task_vars)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 165, in _configure_module
+    environment=final_environment)
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/module_common.py", line 910, in modify_module
+Process WorkerProcess-4:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/process/worker.py", line 118, in run
+    self._rslt_q
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 138, in run
+    res = self._execute()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 558, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/normal.py", line 46, in run
+    result = merge_hash(result, self._execute_module(task_vars=task_vars, wrap_async=wrap_async))
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 694, in _execute_module
+    (module_style, shebang, module_data, module_path) = self._configure_module(module_name=module_name, module_args=module_args, task_vars=task_vars)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 165, in _configure_module
+    environment=final_environment)
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/module_common.py", line 910, in modify_module
+Process WorkerProcess-3:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/process/worker.py", line 118, in run
+    self._rslt_q
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 138, in run
+    res = self._execute()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 558, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/normal.py", line 46, in run
+    result = merge_hash(result, self._execute_module(task_vars=task_vars, wrap_async=wrap_async))
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 694, in _execute_module
+    (module_style, shebang, module_data, module_path) = self._configure_module(module_name=module_name, module_args=module_args, task_vars=task_vars)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 165, in _configure_module
+    environment=final_environment)
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/module_common.py", line 910, in modify_module
+Process WorkerProcess-2:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/process/worker.py", line 118, in run
+    self._rslt_q
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 138, in run
+    res = self._execute()
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/task_executor.py", line 558, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/normal.py", line 46, in run
+    result = merge_hash(result, self._execute_module(task_vars=task_vars, wrap_async=wrap_async))
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 694, in _execute_module
+    (module_style, shebang, module_data, module_path) = self._configure_module(module_name=module_name, module_args=module_args, task_vars=task_vars)
+  File "/usr/lib/python2.7/dist-packages/ansible/plugins/action/__init__.py", line 165, in _configure_module
+    environment=final_environment)
+  File "/usr/lib/python2.7/dist-packages/ansible/executor/module_common.py", line 910, in modify_module
+ [ERROR]: User interrupted execution

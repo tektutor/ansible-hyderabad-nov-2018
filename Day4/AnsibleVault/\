@@ -1,0 +1,45 @@
+- name: Install, configure and deploy web page in nginx web server
+  hosts: all
+  become: yes
+  vars_files:
+    - nginx_vars_file
+  tasks:
+    - name: Install nginx web server in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      apt: name=nginx state=latest update_cache=yes
+
+    - name: Configure nginx web server in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      copy: src=default dest=/etc/nginx/sites-available/default
+
+    - name: Install extra package for enterprise linux (EPEL) in CentOS
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=epel-release state=latest
+
+    - name: Install nginx web server in CentOS
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=nginx state=latest 
+
+    - name: Configure nginx web server in CentOS 
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      copy: src=default.conf dest=/etc/nginx/conf.d/default.conf
+
+    - name: Create Document root folder
+      file: path=/var/html state=directory mode=0777
+
+    - name: Restart nginx web server
+      command: service nginx restart
+
+    - name: Deploy web page in nginx web server
+      template: src=index.html.j2 dest=/var/html/index.html
+
+- name: Test if nginx server is up and running
+  hosts: localhost
+  tasks:
+    - name: Make sure curl is installed
+      apt: name=curl state=present update_cache=yes
+
+    - name: Access the web page
+      shell: "curl http://localhost:{{item}}"
+      with_sequence: start=8001 end=8008
+

@@ -1,0 +1,21 @@
+---
+- name: Create the Document root folder
+  file: path=/var/html state=directory mode=0777
+ 
+- name: Configure Document root folder in Ubuntu
+  when: ansible_distribution == "Ubuntu"
+  template: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf backup=yes
+  notify:
+     - Restart apache web server in Ubuntu
+
+- name: Grant permission to all users for Document root folder in Ubuntu
+  when: ansible_distribution == "Ubuntu"
+  copy: src=apache2.conf dest=/etc/apache2/apache2.conf backup=yes
+  notify:
+     - Restart apache web server in Ubuntu
+
+- name: Configure Document root folder in CentOS 
+  when: ansible_distribution == "CentOS"
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf backup=yes
+  notify:
+     - Restart apache web server in CentOS
