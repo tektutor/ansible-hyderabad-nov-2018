@@ -1,0 +1,13 @@
+- name: Demonstrates use of docker_container module
+  hosts: localhost
+  tasks:
+    - name: Provision docker container
+      docker_container:
+          image: "tektutor/ansible-ubuntu"
+          name: "ubuntu{{item}}"
+          hostname: "ubuntu{{item}}"
+          state: started
+          ports:
+            - "800{{item}}:80"
+            - "200{{item}}:22"
+      with_sequence: start=1 end=5

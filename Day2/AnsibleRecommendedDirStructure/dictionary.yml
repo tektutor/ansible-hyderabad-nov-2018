@@ -1,0 +1,14 @@
+- name: Demonstrates dictionary variable
+  hosts: all
+  vars:
+    - contacts:
+         Ram:
+           name: Raman
+           mobile: 123-456-7890
+         Sita: 
+           name: Sita
+           mobile: 343-542-4532
+  tasks:
+    - name: Print the contact details
+      debug: msg="{{item.value.name}} ==> {{item.value.mobile}}"
+      with_dict: "{{contacts}}"

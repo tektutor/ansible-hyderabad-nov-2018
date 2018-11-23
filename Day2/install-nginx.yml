@@ -1,0 +1,30 @@
+- name: This playbook will demonstrate installing, configuring and deploying web page
+  hosts: all
+  become: yes
+  vars:
+    - greeting_msg: DevOps
+    - cm_tool: Ansible
+    - provisioner_tool: Docker
+  tasks:
+    - name: Install nginx web server
+      apt: name=nginx state=latest update_cache=yes
+    
+    - name: Configure nginx web server
+      copy: src=default dest=/etc/nginx/sites-available/default backup=yes
+
+    - name: Create the updated Document root folder
+      file: path=/var/html state=directory mode=0777
+
+    - name: Restart the nginx web server
+      #service: name=nginx state=restarted
+      command: service nginx restart 
+
+    - name: Deploy index.html file into Document root folder
+      template: src=index.html.j2 dest=/var/html/index.html
+
+- name: Check if the nginx web server is up and running
+  hosts: localhost
+  tasks:
+    - name: Access the web page
+      shell: "curl http://localhost:{{item}}"
+      with_sequence: start=8001 end=8005

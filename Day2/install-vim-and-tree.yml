@@ -1,0 +1,16 @@
+- name: Demonstrates install softwares via playbook
+  hosts: all
+  become: yes
+  tasks:
+   - name: Install vim editor
+     apt: name=vim state=latest update_cache=yes
+
+   - name: Install tree utility 
+     apt: name=tree state=latest update_cache=yes
+
+   - name: Run the tree utlity
+     shell: tree /
+     register: output
+
+   - name: Print the output
+     debug: var=output

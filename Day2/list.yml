@@ -1,0 +1,17 @@
+- name: Demonstrates install softwares via playbook
+  hosts: all
+  become: yes
+  vars:
+    software_tools:
+       - vim
+       - tree
+  tasks:
+   - name: Install the software tools 
+     apt: name="{{item}}" state=latest update_cache=yes
+     with_items: "{{software_tools}}"
+
+   - shell: tree /
+     register: output
+
+   - name: Print the output
+     debug: var=output
