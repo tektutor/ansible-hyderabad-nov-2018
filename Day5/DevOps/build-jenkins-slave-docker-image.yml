@@ -19,5 +19,5 @@
       docker_image:
           name: "{{imageName}}"
           path: "."
-          state: build 
+          state: build
           dockerfile: Dockerfile
