@@ -11,6 +11,7 @@
 
     - name: Remove the existing containers
       shell: docker rm -f $(docker ps -aq) 
+      ignore_errors: yes
 
     - name: Remove the existing docker image 
       shell: "docker rmi {{imageName}}"  
