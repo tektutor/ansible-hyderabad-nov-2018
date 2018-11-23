@@ -1,0 +1,9 @@
+- name: Builds Jenkins slave docker image
+  hosts: localhost
+  tasks:
+    - name: Build Jenkins slave docker image
+      docker_image:
+          name: "tektutor/jenkins-slave"
+          path: "."
+          state: present
+          dockerfile: Dockerfile

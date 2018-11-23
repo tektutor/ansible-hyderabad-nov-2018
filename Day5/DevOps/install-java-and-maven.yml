@@ -1,0 +1,9 @@
+- name: Installs JDK and Maven build tool in the Jenkins Slave Container
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install JDK
+      apt: name=openjdk-8-jdk-headless state=latest update_cache=yes
+
+    - name: Install Maven build tool
+      apt: name=maven state=latest update_cache=yes
